@@ -1,0 +1,12 @@
+{
+  "name": "cas-journal-search",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Search the supplied 2025 CAS journal reference dataset.",
+  "scripts": {
+    "test": "node --test",
+    "start": "python3 -m http.server 8765 --directory docs --bind 127.0.0.1"
+  },
+  "engines": { "node": ">=20" }
+}

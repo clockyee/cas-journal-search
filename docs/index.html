@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Search 21,772 journals in the supplied 2025 CAS reference dataset. Filter by CAS division, Top Journal and Open Access.">
+  <meta name="theme-color" content="#f6f7f4">
+  <title>Journal Atlas — 2025 CAS Division Search</title>
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./assets/style.css">
+  <script type="module" src="./assets/app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#search">Skip to journal search</a>
+  <header class="masthead shell">
+    <a class="brand" href="./" aria-label="Journal Atlas home"><span class="brand-mark" aria-hidden="true">J<span>·</span>A</span><span>Journal Atlas</span></a>
+    <nav aria-label="Site navigation"><a href="#about">About the data</a><a class="source-link" href="https://github.com/clockyee/cas-journal-search" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a></nav>
+  </header>
+  <main class="shell">
+    <section class="hero" aria-labelledby="page-title">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="live-dot" aria-hidden="true"></span> 2025 EDITION <span class="divider">/</span> CAS REFERENCE DATA</div>
+        <h1 id="page-title">A clearer view<br>of your <em>next journal.</em></h1>
+        <p>Find a journal’s CAS division, Top status and open access designation. One searchable directory, all in one place.</p>
+      </div>
+      <aside class="edition-card" aria-label="Dataset summary">
+        <div class="edition-heading"><span>THE COLLECTION</span><span class="edition-year">2025</span></div>
+        <div class="collection-total" id="collection-total">21,772</div><div class="collection-caption">journals to explore</div>
+        <div class="division-bar" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+        <div class="edition-bottom"><span>4 CAS divisions</span><span>Reference edition</span></div>
+      </aside>
+    </section>
+
+    <section class="explorer" aria-label="Journal directory">
+      <form id="search-form" role="search" aria-label="Search journals">
+        <div class="search-heading"><label for="search">Find a journal</label><span class="keyboard-hint">Press <kbd>/</kbd> to search</span></div>
+        <div class="search-box"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg><input id="search" type="search" maxlength="200" placeholder="Search by journal name or a few keywords…" autocomplete="off" spellcheck="false" aria-describedby="search-help"><button id="clear-search" class="clear-search" type="button" aria-label="Clear search" hidden>×</button></div>
+        <div class="search-support"><p id="search-help">Partial names work. Use several words to narrow your search.</p><div class="examples"><span>Try</span><button type="button" data-query="nature">nature</button><button type="button" data-query="soft robot">soft robot</button><button type="button" data-query="energy">energy</button></div></div>
+        <fieldset class="filters" id="filters" disabled><legend class="sr-only">Filter journals</legend>
+          <div class="filter"><label for="division">CAS Division</label><select id="division"><option value="">All divisions</option><option value="1">Division 1</option><option value="2">Division 2</option><option value="3">Division 3</option><option value="4">Division 4</option></select></div>
+          <div class="filter"><label for="top">Top Journal</label><select id="top"><option value="">All journals</option><option value="yes">Yes — Top journals</option><option value="no">No — Other journals</option></select></div>
+          <div class="filter"><label for="oa">Open Access</label><select id="oa"><option value="">All access types</option><option value="yes">Yes — Open access</option><option value="no">No — Not designated OA</option></select></div>
+          <button class="reset-button" id="reset" type="button">Reset filters <span aria-hidden="true">↺</span></button>
+        </fieldset>
+      </form>
+
+      <div class="results-toolbar"><div><h2>Journal directory <span class="count-badge" id="result-count">—</span></h2><p id="result-summary" role="status" aria-live="polite" aria-atomic="true">Loading the journal collection…</p></div><div class="result-actions"><button id="share" class="text-button" type="button" disabled>Copy link <span aria-hidden="true">↗</span></button><button id="export" class="export-button" type="button" disabled><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 2v10m-4-4 4 4 4-4M3 13v4h14v-4"/></svg>Export CSV</button></div></div>
+      <div id="load-error" class="message error" role="alert" hidden><h3>The dataset couldn’t be loaded.</h3><p>Check your connection, then try again.</p><button id="retry" class="primary-button" type="button">Try again</button></div>
+      <div class="table-controls"><div class="table-caption"><span class="status-dot" aria-hidden="true"></span><span id="table-status">Preparing directory</span></div><label for="sort">Sort by <select id="sort" disabled><option value="name">Journal A–Z</option><option value="name-desc">Journal Z–A</option><option value="division">CAS Division</option></select></label></div>
+      <div class="table-wrap" tabindex="0" role="region" aria-label="Journal results table" aria-busy="true" id="table-wrap">
+        <table><caption class="sr-only">2025 reference journal classifications. CAS divisions are not JCR quartiles.</caption><thead><tr><th scope="col" class="name-column">Journal</th><th scope="col">CAS Division</th><th scope="col">Top Journal</th><th scope="col">Open Access</th></tr></thead><tbody id="results"><tr><td colspan="4" class="loading-cell">Loading 21,772 journals…</td></tr></tbody></table>
+      </div>
+      <div class="message empty" id="empty" hidden><div class="empty-icon" aria-hidden="true">⌕</div><h3>No matching journals</h3><p>Try a shorter part of the journal name or remove a filter.</p><button class="primary-button" id="empty-reset" type="button">Clear search & filters</button></div>
+      <div class="pagination" id="pagination"><label for="size">Rows per page <select id="size" disabled><option>25</option><option selected>50</option><option>100</option></select></label><div class="page-actions"><span id="page-label">Page 1 of 1</span><button id="first" type="button" aria-label="First page" disabled>«</button><button id="previous" type="button" aria-label="Previous page" disabled>‹</button><button id="next" type="button" aria-label="Next page" disabled>›</button><button id="last" type="button" aria-label="Last page" disabled>»</button></div></div>
+    </section>
+
+    <section id="about" class="about" aria-labelledby="about-title"><div><div class="eyebrow">A NOTE ON THE DATA</div><h2 id="about-title">A reference, with context.</h2></div><div class="about-content"><p>This directory reproduces the supplied <strong>2025 CAS journal classification reference spreadsheet</strong>. It is an independent lookup tool, not an official CAS service or a live ranking.</p><p><strong>CAS Division</strong> preserves the source’s 1–4 classification; these are not JCR quartiles. <strong>Top Journal</strong> and <strong>Open Access</strong> reproduce the source’s Yes/No flags. Subject categories, ISSNs and impact factors were not included in the source.</p><details><summary>Source & dataset details</summary><dl><div><dt>Source file</dt><dd lang="zh-CN">附件7：2025中科院期刊分区表(参考).xlsx</dd></div><div><dt>Records</dt><dd>21,772 unique journal names · 1,789 Top journals · 5,955 Open Access journals</dd></div><div><dt>CAS divisions</dt><dd>Division 1: 1,451 · Division 2: 2,844 · Division 3: 4,583 · Division 4: 12,894</dd></div><div><dt>Search</dt><dd>Case-insensitive partial matching. All entered words must appear in the name. Accents and punctuation are normalized; spelling errors are not automatically corrected.</dd></div></dl><a href="./data/metadata.json">View dataset metadata ↗</a></details></div></section>
+  </main>
+  <footer class="shell"><span class="footer-brand">Journal Atlas <span>/</span> 2025</span><span>Search locally. Explore freely.</span><a href="https://github.com/clockyee/cas-journal-search" target="_blank" rel="noopener noreferrer">View on GitHub ↗</a></footer>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+  <noscript><p class="noscript">Enable JavaScript to search this directory. You can also <a href="./data/journals.json">download the complete dataset</a>.</p></noscript>
+</body>
+</html>

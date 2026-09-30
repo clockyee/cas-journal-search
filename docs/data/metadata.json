@@ -1,0 +1,29 @@
+{
+  "year": 2025,
+  "sourceFile": "附件7：2025中科院期刊分区表(参考).xlsx",
+  "sourceSHA256": "d877d485a268adb68aaccd8eff7ac1afeadfa9c27cd1db138b3fe1821f19d5cc",
+  "cleanedCsvSHA256": "8d7055f9bf3886076bc9abd0ef31c0221457efb6494b92e6d2f93dbbf729ae0c",
+  "dataSHA256": "174f148b0061271f07e1dfad8fd7f0c49cf1cd2ef75ebc190ab0de87dce18876",
+  "columns": [
+    "Journal",
+    "CAS Division",
+    "Top Journal",
+    "Open Access"
+  ],
+  "rowFormat": [
+    "string",
+    "integer 1–4",
+    "boolean",
+    "boolean"
+  ],
+  "total": 21772,
+  "divisions": {
+    "1": 1451,
+    "2": 2844,
+    "3": 4583,
+    "4": 12894
+  },
+  "top": 1789,
+  "openAccess": 5955,
+  "note": "User-supplied 2025 reference spreadsheet. This is not an official or live CAS service. Names and classifications are preserved; Chinese yes/no values are encoded as booleans. CAS divisions are not JCR quartiles. No subject category, ISSN or impact factor was supplied."
+}
