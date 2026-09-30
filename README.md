@@ -56,6 +56,8 @@ The cleaned CSV has the original prepared headers `期刊名称,中科院分区,
 
 Publish from the `main` branch, `/docs` directory. The site uses relative URLs so it works under the repository path. `.nojekyll` enables direct static serving. No build pipeline is required.
 
+DM Sans and Libre Caslon Display are self-hosted; their SIL Open Font Licenses are included in `docs/assets/fonts/`. The page makes no external font or search-service requests.
+
 ## Checks
 
 The Node test suite verifies counts and dataset integrity, partial/multiword matching, combined filters, sorting, complete pagination (including 1,535 `science` matches), URL state handling and CSV export. Browser checks additionally cover the rendered page and controls.
